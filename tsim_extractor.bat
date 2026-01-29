@@ -1,0 +1,1 @@
+python %~dp0tsim_extractor.py %*
