@@ -46,7 +46,9 @@ def parse_file(file: TextIOWrapper) -> list[ObjectData]:
 
         try:
             if int(segs[3]) == 2:
-                result.append((ObjectType.SWITCH, x, y)) 
+                rails = [segs[4], segs[5]]
+                if not ("HorizontalRail" in rails and "VerticalRail" in rails):
+                    result.append((ObjectType.SWITCH, x, y)) 
         except ValueError:
             print(f"tsim_extractor: line {line_count}: Could not parse rail count: {segs[3]}", file=sys.stderr)
             print(f"-> {line}", file=sys.stderr)
